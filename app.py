@@ -7,9 +7,9 @@ from functools import wraps
 # create the application object
 app = Flask(__name__)
 
-app.secret_key = "no no no no never"
-app.database = "posts.db"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.db'
+# config
+import os
+app.config.from_object(os.environ['APP_SETTINGS'])
 
 
 
