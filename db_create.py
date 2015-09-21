@@ -8,8 +8,8 @@ from models import BlogPost, User
 db.session.add(User("admin", "ad@min.com", "admin"))
 db.session.add(User("ghooo", "ghooo@ghoo.com", "ghooo"))
 
-db.session.add(BlogPost("Good", "I\'m good.", 1));
-db.session.add(BlogPost("Well", "I\'m well.", 1));
+db.session.add(BlogPost("Good", "I\'m good.", 1))
+db.session.add(BlogPost("Well", "I\'m well.", 1))
 db.session.add(BlogPost("postgres", "we setup a local postgres", 2))
 
 # commit the changes
