@@ -10,5 +10,7 @@ class BaseConfig(object):
 class DevelopmentConfig(BaseConfig):
 	DEBUG = True
 
+# to enable at heroku use this command:
+# heroku config:set APP_SETTINGS=config.ProductionConfig --remote heroku
 class ProductionConfig(BaseConfig):
 	DEBUG = False
