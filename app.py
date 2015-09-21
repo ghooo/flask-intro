@@ -2,6 +2,7 @@
 from flask import Flask, render_template, redirect, url_for, request, session, \
 		flash
 from flask.ext.sqlalchemy import SQLAlchemy
+from flask.ext.bcrypt import Bcrypt 
 from functools import wraps
 
 # create the application object
@@ -14,6 +15,8 @@ app.config.from_object(os.environ['APP_SETTINGS'])
 # create the sqlalchemy object
 db = SQLAlchemy(app)
 
+# create the bcrypt object
+bcrypt = Bcrypt(app)
 
 # login required decorator
 def login_required(f):
