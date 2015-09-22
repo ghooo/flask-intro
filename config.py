@@ -7,6 +7,12 @@ class BaseConfig(object):
 			"\x17\xa8\xdd\xc1\x15U`H\xf0\x11z"
 	SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
 	
+class TestConfig(BaseConfig):
+    DEBUG = True
+    TESTING = True
+    WTF_CSRF_ENABLED = False
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
+
 class DevelopmentConfig(BaseConfig):
 	DEBUG = True
 
