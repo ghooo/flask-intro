@@ -49,7 +49,7 @@ def login():
 		else:
 			session['logged_in'] = True
 			flash('You were logged in.')
-			return redirect(url_for('home'))
+			return redirect(url_for('home.home'))
 	return render_template('login.html', error=error)
 
 
@@ -58,4 +58,4 @@ def login():
 def logout():
 	session.pop('logged_in', None)
 	flash('You were logged out.')
-	return redirect(url_for('welcome'))
+	return redirect(url_for('home.welcome'))

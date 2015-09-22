@@ -1,5 +1,5 @@
-from app import db
-from models import BlogPost, User
+from project import db
+from project.models import BlogPost, User
 
 #create the database and the db tables
 # db.create_all()
