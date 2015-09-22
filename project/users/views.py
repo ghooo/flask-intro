@@ -15,7 +15,7 @@ users_blueprint = Blueprint(
 	template_folder='templates'
 )
 
-from app import app, bcrypt
+from project import app, bcrypt
 
 
 ##########################
