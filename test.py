@@ -59,12 +59,12 @@ class FlaskTestCase(BaseTestCase):
 	# Ensure that the main page requires login
 	def test_main_route_requries_login(self):
 		response = self.client.get('/', follow_redirects = True)
-		self.assertIn(b'You need to login first', response.data)
+		self.assertIn(b'Please log in to access this page.', response.data)
 
 	# Ensure that the logout page requires the user to be logged in
 	def test_logout_page_requires_login(self):
 		response = self.client.get('/logout', follow_redirects = True)
-		self.assertIn(b'You need to login first', response.data)
+		self.assertIn(b'Please log in to access this page.', response.data)
 	
 	# Ensure that posts show up on the main page
 	def test_posts_show_up(self):
