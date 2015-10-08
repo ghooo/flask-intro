@@ -5,9 +5,10 @@
 from flask import flash, redirect, render_template, request, \
 	url_for, Blueprint
 from flask.ext.login import login_user, login_required, logout_user
-from form import LoginForm
+from form import LoginForm, RegisterForm
 from project.models import User
 from project import bcrypt
+from project import db
 
 ################
 #### config ####
@@ -32,7 +33,7 @@ def login():
 	if request.method == 'POST':
 		if form.validate_on_submit():
 			user = User.query.filter_by( \
-                    name=request.form['username']).first()
+					name=request.form['username']).first()
 			if user is not None and bcrypt.check_password_hash(user.password, \
 					request.form['password']):
 				login_user(user)
@@ -52,3 +53,19 @@ def logout():
 	logout_user()
 	flash('You were logged out.')
 	return redirect(url_for('home.welcome'))
+
+@users_blueprint.route(
+	'/register', methods=['GET', 'POST'])   # pragma: no cover
+def register():
+	form = RegisterForm()
+	if form.validate_on_submit():
+		user = User(
+			name=form.username.data,
+			email=form.email.data,
+			password=form.password.data
+		)
+		db.session.add(user)
+		db.session.commit()
+		login_user(user)
+		return redirect(url_for('home.home'))
+	return render_template('register.html', form=form)
