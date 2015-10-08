@@ -7,7 +7,7 @@ from flask import flash, redirect, url_for, render_template, \
 		Blueprint, request
 from forms import MessageForm
 from flask.ext.login import login_required, current_user
-from models import BlogPost
+from project.models import BlogPost
 
 home_blueprint = Blueprint(
 	'home', __name__,
